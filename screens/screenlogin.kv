@@ -1,0 +1,52 @@
+<ScreenLogin>:
+    FloatLayout:
+        id: floatlayout
+        canvas.before:
+            Color:
+                rgba: get_color_from_hex('#D3D4D5')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Image:
+            size_hint: .3, .3
+            pos_hint: {"center_x": .5, "center_y": .75}
+            source: 'images/padlock.png'
+        MDLabel:
+            halign: "center"
+            id: msg
+            text: root.mensagem
+            theme_text_color:"Error"
+        GridLayout:
+            cols: 1
+            spacing: 5
+            size_hint: .7, .37
+            pos_hint: {"center_x": .5, "center_y": .3}
+
+            Label:
+                text: "Usuário"
+                height:'30dp'
+                halign: 'left'
+                valign: 'middle'
+                color: get_color_from_hex('#000000')
+            MDTextField:
+                id: usuario
+                multiline: False
+                hint_text: "Insira o seu login"
+                icon_left: 'login'
+            Label:
+                text: "Senha"             
+                height:'30dp'
+                halign: 'left'
+                valign: 'middle'
+                color: get_color_from_hex('#000000')
+            Password:
+                id: senha
+                size_hint_x: 1.
+                width: "600dp"
+                hint_text: "Password"
+                
+            Label:
+            MDFillRoundFlatButton:
+                size_hint: 1., 1.
+                text: "Login"
+                on_release: root.login(usuario, senha)

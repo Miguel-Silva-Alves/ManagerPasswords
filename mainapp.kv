@@ -1,0 +1,88 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import images_path kivymd.images_path
+
+#:set text_color get_color_from_hex("#4a4939")
+#:set focus_color get_color_from_hex("#e7e4c0")
+#:set ripple_color get_color_from_hex("#c5bdd2")
+#:set bg_color get_color_from_hex("#f7f4e7")
+#:set selected_color get_color_from_hex("#0c6c4d")
+
+<Manager>:
+    ScreenLogin:
+        name:'telalogin'
+    ScreenUser:
+        name:'usuario'
+    ScreenHelp:
+        name:'help'
+<ListItemWithRemove>:
+
+    IconLeftWidget:
+        icon: root.icon
+        on_press:root.click_cancel()
+
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: focus_color
+    unfocus_color: bg_color
+    text_color: text_color
+    icon_color: text_color
+    ripple_color: ripple_color
+    selected_color: selected_color
+
+
+<DrawerLabelItem@MDNavigationDrawerItem>
+    bg_color: bg_color
+    text_color: text_color
+    icon_color: text_color
+    _no_ripple_effect: True
+<Content>
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "200dp"
+
+    MDTextField:
+        id: login
+        hint_text: "Login"
+        helper_text_mode: "persistent"
+        icon_left: "login"
+    
+    Password:
+        id: password
+        size_hint_x: 1.
+        hint_text: "Password"
+
+    MDTextField:
+        id: descricao
+        hint_text: "Descrição"
+        icon_left: "information"
+
+<ListItemWithCheckbox>:
+    text: ''
+    IconLeftWidget:
+        icon: ''
+    RightCheckbox:
+        group: 'group'
+
+<Seperator@Widget>:
+    id: separator
+    size_hint_y: None
+    height: 8
+    thickness: 2
+    canvas:
+        Color:
+            rgb: bg_color
+        Rectangle:
+            #pos: 0, separator.center_y
+            pos: self.pos[0], separator.center_y
+            size: separator.width, self.thickness
+<ContentSearch>:
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "50dp"
+
+    MDTextField:
+        id: pesquisa
+        hint_text: "Pesquisa"
+        helper_text_mode: "persistent"
+        icon_left: "folder-search"

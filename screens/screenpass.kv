@@ -1,0 +1,19 @@
+<ScreenUser>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: "Meus Logins"
+            left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+            right_action_items:[["search-web", lambda x: root.pesquisar(x)]]
+
+        AnchorLayout:
+            id: anchor
+        MDFloatingActionButton:
+            icon: "plus"
+            md_bg_color: app.theme_cls.primary_color
+            pos_hint: {"center_x": .9, "center_y": .1}
+            on_release:
+                root.more()
+    MDNavigationDrawer:
+        id: nav_drawer
+        ContentNavigationDrawer:
